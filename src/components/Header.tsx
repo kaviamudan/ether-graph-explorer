@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
-import { Eye, Settings } from 'lucide-react';
+import { Eye, Menu, Settings, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Add scroll event listener
   React.useEffect(() => {
@@ -14,6 +16,10 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
     <header 
@@ -26,34 +32,35 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Eye className="h-6 w-6 text-primary" />
-          <span className="text-xl font-semibold">ETHER-EYE</span>
+          <Link to="/" className="text-xl font-semibold">ETHER-EYE</Link>
         </div>
         
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a 
-            href="#" 
+          <Link 
+            to="/" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Dashboard
-          </a>
-          <a 
-            href="#" 
+            Home
+          </Link>
+          <Link 
+            to="/features" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Explorer
-          </a>
-          <a 
-            href="#" 
+            Features
+          </Link>
+          <Link 
+            to="/about" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Anomalies
-          </a>
-          <a 
-            href="#" 
+            About
+          </Link>
+          <Link 
+            to="/contact" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
-            Documentation
-          </a>
+            Contact
+          </Link>
         </nav>
         
         <div className="flex items-center space-x-4">
@@ -64,11 +71,56 @@ const Header: React.FC = () => {
             <Settings className="h-5 w-5" />
           </button>
           
-          <button className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/90">
-            Connect Wallet
+          <Link to="/login" className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/90">
+            Login
+          </Link>
+          
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 rounded-full hover:bg-secondary transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
+      
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-background shadow-md py-4 animation-slide-down">
+          <nav className="container mx-auto px-4 flex flex-col space-y-4">
+            <Link 
+              to="/" 
+              className="text-sm font-medium hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/features" 
+              className="text-sm font-medium hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Features
+            </Link>
+            <Link 
+              to="/about" 
+              className="text-sm font-medium hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-sm font-medium hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
