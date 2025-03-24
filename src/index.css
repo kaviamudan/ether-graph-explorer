@@ -7,38 +7,6 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 220 20% 10%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
-
-    --primary: 220 60% 50%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 220 20% 10%;
-
-    --muted: 210 20% 96%;
-    --muted-foreground: 220 10% 55%;
-
-    --accent: 220 60% 50%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 60% 50%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 220 20% 10%;
     --foreground: 210 40% 98%;
 
@@ -48,7 +16,7 @@
     --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 70% 60%;
+    --primary: 195 70% 60%;
     --primary-foreground: 220 20% 10%;
 
     --secondary: 220 20% 16%;
@@ -57,7 +25,7 @@
     --muted: 220 20% 16%;
     --muted-foreground: 210 30% 80%;
 
-    --accent: 210 70% 60%;
+    --accent: 195 70% 60%;
     --accent-foreground: 220 20% 10%;
 
     --destructive: 0 70% 60%;
@@ -65,7 +33,10 @@
 
     --border: 220 20% 20%;
     --input: 220 20% 16%;
-    --ring: 210 70% 60%;
+    --ring: 195 70% 60%;
+
+    --success: 155 70% 50%;
+    --warning: 40 90% 60%;
   }
 }
 
@@ -100,7 +71,27 @@
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-xl bg-white/20 dark:bg-black/20 border border-white/10 dark:border-white/5;
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-white/5;
+  }
+  
+  .neo-glow {
+    box-shadow: 0 0 15px 1px rgba(0, 204, 255, 0.2);
+  }
+  
+  .success-glow {
+    box-shadow: 0 0 15px 1px rgba(0, 255, 128, 0.2);
+  }
+  
+  .warning-glow {
+    box-shadow: 0 0 15px 1px rgba(255, 180, 0, 0.2);
+  }
+  
+  .danger-glow {
+    box-shadow: 0 0 15px 1px rgba(255, 0, 0, 0.2);
   }
   
   .animation-fade {
