@@ -1,12 +1,15 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Activity, BarChart2, Eye, EyeOff, 
   LayoutDashboard, Search, Settings, Wallet 
 } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  
   return (
     <div className="w-60 bg-card border-r border-border flex flex-col h-screen">
       {/* Logo */}
@@ -28,22 +31,25 @@ const Sidebar: React.FC = () => {
               to="/dashboard" 
               icon={<LayoutDashboard size={18} />} 
               label="Dashboard" 
-              active 
+              active={currentPath === '/dashboard'} 
             />
             <NavItem 
               to="/wallets" 
               icon={<Wallet size={18} />} 
               label="Wallets" 
+              active={currentPath === '/wallets'} 
             />
             <NavItem 
               to="/traces" 
               icon={<Activity size={18} />} 
               label="Traces" 
+              active={currentPath === '/traces'} 
             />
             <NavItem 
               to="/analytics" 
               icon={<BarChart2 size={18} />} 
               label="Analytics" 
+              active={currentPath === '/analytics'} 
             />
           </nav>
         </div>
@@ -57,11 +63,13 @@ const Sidebar: React.FC = () => {
               to="/explorer" 
               icon={<Search size={18} />} 
               label="Explorer" 
+              active={currentPath === '/explorer'} 
             />
             <NavItem 
               to="/settings" 
               icon={<Settings size={18} />} 
               label="Settings" 
+              active={currentPath === '/settings'} 
             />
           </nav>
         </div>

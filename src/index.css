@@ -7,6 +7,39 @@
 
 @layer base {
   :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    --primary: 262 80% 60%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 262 80% 60%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 80% 60%;
+
+    --success: 155 70% 50%;
+    --warning: 40 90% 60%;
+  }
+
+  .dark {
     --background: 220 20% 10%;
     --foreground: 210 40% 98%;
 
@@ -16,7 +49,7 @@
     --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 195 70% 60%;
+    --primary: 262 80% 60%;
     --primary-foreground: 220 20% 10%;
 
     --secondary: 220 20% 16%;
@@ -25,7 +58,7 @@
     --muted: 220 20% 16%;
     --muted-foreground: 210 30% 80%;
 
-    --accent: 195 70% 60%;
+    --accent: 262 80% 60%;
     --accent-foreground: 220 20% 10%;
 
     --destructive: 0 70% 60%;
@@ -33,7 +66,7 @@
 
     --border: 220 20% 20%;
     --input: 220 20% 16%;
-    --ring: 195 70% 60%;
+    --ring: 262 80% 60%;
 
     --success: 155 70% 50%;
     --warning: 40 90% 60%;
@@ -79,7 +112,7 @@
   }
   
   .neo-glow {
-    box-shadow: 0 0 15px 1px rgba(0, 204, 255, 0.2);
+    box-shadow: 0 0 15px 1px rgba(168, 85, 247, 0.3);
   }
   
   .success-glow {
@@ -162,4 +195,18 @@
     opacity: 1; 
     transform: translateX(0); 
   }
+}
+
+/* Theme provider class */
+html {
+  @apply dark;
+}
+
+/* Add light theme class for future use */
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }

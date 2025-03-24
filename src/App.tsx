@@ -10,6 +10,11 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Wallets from "./pages/Wallets";
+import Traces from "./pages/Traces";
+import Analytics from "./pages/Analytics";
+import Explorer from "./pages/Explorer";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +32,11 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/wallets" element={<Wallets />} />
+          <Route path="/traces" element={<Traces />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/explorer" element={<Explorer />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
